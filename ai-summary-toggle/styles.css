@@ -1,0 +1,333 @@
+/* Project-specific Design Tokens from Figma */
+:root {
+  /* Colors */
+  --text-primary: #2e3438;
+  --text-secondary: #585d60;
+  --text-subtle: #787c7f;
+  --icon-secondary: #9fa3a8;
+  --background-app: #f8fafb;
+  --background-body: #ffffff;
+  --border-container: #e2e5e9;
+  --lemon-400: #fce153;
+  --grape-500: #b32df6;
+  
+  /* Typography */
+  --font-family: 'Lato', sans-serif;
+  --size-xs: 11px;
+  --size-m: 14px;
+  --size-l: 15px;
+  --line-height-xs: 12px;
+  --line-height-m: 20px;
+  --line-height-l: 22px;
+  --weight-regular: 400;
+  --weight-bold: 700;
+  --weight-black: 900;
+}
+
+/* Override container width for this project */
+.container {
+  max-width: 680px;
+}
+
+/* Prototype frame - no background, just spacing */
+.prototype-frame {
+  background: transparent;
+  padding: 0;
+}
+
+/* Prototype-specific styles */
+.iteration-container {
+  background: var(--background-body);
+}
+
+.iteration {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.iteration.active {
+  display: block;
+}
+
+/* Message Card - matches Figma spacing */
+.message-card {
+  background: var(--background-body);
+  padding: 8px 16px 16px 16px;
+  font-family: var(--font-family);
+}
+
+.message-wrapper {
+  display: flex;
+  gap: 12px;
+}
+
+/* Avatar - matches Figma: 36x36, 4px radius, 2px top padding on wrapper */
+.avatar-wrapper {
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Name & Time */
+.name-time {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  height: 20px;
+}
+
+.name {
+  font-size: var(--size-m);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  line-height: var(--line-height-m);
+}
+
+.time {
+  font-size: var(--size-xs);
+  font-weight: var(--weight-regular);
+  color: var(--text-subtle);
+  line-height: var(--line-height-xs);
+}
+
+/* Attachments */
+.attachments {
+  display: flex;
+  flex-direction: column;
+}
+
+/* AI Chat Attachment - matches Figma: pt-4px */
+.ai-chat-attachment {
+  padding-top: 4px;
+}
+
+/* AI Chat Wrapper - matches Figma: min-h-36px, pb-4px, gradient border */
+.ai-chat-wrapper {
+  background: var(--background-app);
+  border-radius: 8px;
+  min-height: 36px;
+  padding: 0 0 4px 0;
+  position: relative;
+}
+
+.ai-chat-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 1px;
+  background: linear-gradient(90deg, #FCE153 0%, #FE9446 40%, #B32DF6 100%);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Expanded Summary (Iteration 1) */
+.ai-summary-text {
+  display: flex;
+  gap: 4px;
+  align-items: flex-start;
+  padding: 8px 8px 4px 12px;
+}
+
+.ai-summary-text p {
+  flex: 1;
+  font-size: var(--size-m);
+  font-weight: var(--weight-regular);
+  color: var(--text-secondary);
+  line-height: var(--line-height-m);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Collapsed Title (Iteration 2) */
+.ai-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 8px 8px 4px 12px;
+}
+
+.title-left {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sparkle-icon {
+  flex-shrink: 0;
+}
+
+.thread-title {
+  font-size: var(--size-m);
+  font-weight: var(--weight-bold);
+  color: var(--text-secondary);
+  line-height: var(--line-height-m);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Expandable Summary */
+.ai-summary-expandable {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 8px 0 12px;
+}
+
+.ai-summary-expandable.expanded {
+  max-height: 200px;
+  padding: 4px 8px 4px 12px;
+}
+
+.ai-summary-expandable p {
+  font-size: var(--size-m);
+  font-weight: var(--weight-regular);
+  color: var(--text-secondary);
+  line-height: var(--line-height-m);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Chevron Button */
+.chevron-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.chevron-btn:hover svg path {
+  stroke: var(--text-secondary);
+}
+
+.expand-btn.expanded {
+  transform: rotate(90deg);
+}
+
+/* App Link Preview - matches Figma: pt-8px */
+.app-link-preview {
+  padding-top: 8px;
+}
+
+.link-preview-container {
+  background: var(--background-body);
+  border: 1px solid var(--border-container);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Link Content - matches Figma: pl-12px pr-8px py-8px */
+.link-content {
+  padding: 8px 8px 8px 12px;
+}
+
+.link-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 22px;
+}
+
+.link-title {
+  flex: 1;
+  font-size: var(--size-l);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  line-height: var(--line-height-l);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 20px;
+}
+
+.favicon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favicon img {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.link-subtitle {
+  font-size: var(--size-m);
+  font-weight: var(--weight-regular);
+  color: var(--text-subtle);
+  line-height: var(--line-height-m);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Expand Control - hidden by default, shown for iteration 2 */
+.expand-control {
+  display: none;
+}
+
+.expand-control.visible {
+  display: block;
+}
+
+/* Expand Link - text with underline */
+.expand-link {
+  background: none;
+  border: none;
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+  font-size: 11px;
+  color: var(--text-subtle);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.expand-link:hover {
+  color: var(--text-secondary);
+}

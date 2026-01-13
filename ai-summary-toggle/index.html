@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Summary Toggle - Iteration Comparison</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../template.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>AI Thread Component Comparison</h1>
+      <p class="subtitle">Toggle between iterations to compare designs</p>
+    </header>
+
+    <!-- Controls -->
+    <div class="controls">
+      <div class="toggle-control">
+        <button class="toggle-btn active" data-iteration="1">
+          <span class="toggle-indicator"></span>
+          1. Summary Only
+        </button>
+        <button class="toggle-btn" data-iteration="2">
+          <span class="toggle-indicator"></span>
+          2. Named &amp; Collapsed
+        </button>
+      </div>
+
+      <!-- Expand/Collapse Control for Iteration 2 -->
+      <div class="expand-control" id="expand-control">
+        <button class="expand-link" id="expand-toggle-btn">
+          <span id="expand-toggle-text">Expand Summary</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Prototype Frame -->
+    <div class="prototype-frame">
+      <!-- Iteration Display Area -->
+      <div class="iteration-container">
+        <!-- Iteration 1: Summary Only -->
+        <div class="iteration iteration-1 active" data-iteration="1">
+          <div class="message-card">
+            <div class="message-wrapper">
+              <div class="avatar-wrapper">
+                <img src="assets/avatar.png" alt="Karen Wilkens" class="avatar">
+              </div>
+              <div class="content">
+                <div class="name-time">
+                  <span class="name">Karen Wilkens</span>
+                  <span class="time">3:34 PM</span>
+                </div>
+                <div class="attachments">
+                  <!-- AI Chat Attachment - Expanded Summary -->
+                  <div class="ai-chat-attachment expanded" id="ai-attachment-1">
+                    <div class="ai-chat-wrapper">
+                      <div class="ai-summary-text" id="summary-text-1">
+                        <p>We discussed the CI/CD pipeline and successfully created a comprehensive Notion page detailing the entire deployment process, including step-by-step instructions and best practices.</p>
+                        <button class="chevron-btn" aria-label="View details">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 4L10 8L6 12" stroke="#9fa3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- App Link Preview -->
+                  <div class="app-link-preview">
+                    <div class="link-preview-container">
+                      <div class="link-content">
+                        <div class="link-title-row">
+                          <span class="link-title">Deployment Process</span>
+                          <button class="chevron-btn" aria-label="Open link">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                              <path d="M6 4L10 8L6 12" stroke="#9fa3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                          </button>
+                        </div>
+                        <div class="link-meta">
+                          <div class="favicon">
+                            <img src="assets/notion-icon.png" alt="Notion" width="16" height="16">
+                          </div>
+                          <span class="link-subtitle">Engineering · Mitra Global</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Iteration 2: Named, Collapsed -->
+        <div class="iteration iteration-2" data-iteration="2">
+          <div class="message-card">
+            <div class="message-wrapper">
+              <div class="avatar-wrapper">
+                <img src="assets/avatar.png" alt="Karen Wilkens" class="avatar">
+              </div>
+              <div class="content">
+                <div class="name-time">
+                  <span class="name">Karen Wilkens</span>
+                  <span class="time">3:34 PM</span>
+                </div>
+                <div class="attachments">
+                  <!-- AI Chat Attachment - Collapsed with Title -->
+                  <div class="ai-chat-attachment collapsed" id="ai-attachment-2">
+                    <div class="ai-chat-wrapper">
+                      <div class="ai-title-row">
+                        <div class="title-left">
+                        <img class="sparkle-icon" src="assets/icon-sparkle-filled.png" alt="" width="20" height="20">
+                          <span class="thread-title">CI/CD pipeline and deployment process</span>
+                        </div>
+                        <button class="chevron-btn expand-btn" aria-label="Expand summary" data-target="ai-attachment-2">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 4L10 8L6 12" stroke="#9fa3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </button>
+                      </div>
+                      <!-- Expandable Summary -->
+                      <div class="ai-summary-expandable" id="summary-expandable-2">
+                        <p>We discussed the CI/CD pipeline and successfully created a comprehensive Notion page detailing the entire deployment process, including step-by-step instructions and best practices.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- App Link Preview -->
+                  <div class="app-link-preview">
+                    <div class="link-preview-container">
+                      <div class="link-content">
+                        <div class="link-title-row">
+                          <span class="link-title">Deployment Process</span>
+                          <button class="chevron-btn" aria-label="Open link">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                              <path d="M6 4L10 8L6 12" stroke="#9fa3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                          </button>
+                        </div>
+                        <div class="link-meta">
+                          <div class="favicon">
+                            <img src="assets/notion-icon.png" alt="Notion" width="16" height="16">
+                          </div>
+                          <span class="link-subtitle">Engineering · Mitra Global</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

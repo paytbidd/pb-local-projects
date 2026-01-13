@@ -1,0 +1,183 @@
+/* Shared Template Styles for Prototype Projects */
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Page Layout */
+body {
+  background: #ffffff;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.header h1 {
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: #787c7f;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.header .subtitle {
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+  font-size: 11px;
+  color: #9fa3a8;
+  line-height: 16px;
+}
+
+/* Controls Area */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+/* Control Buttons (monospace style) */
+.control-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid #e2e5e9;
+  border-radius: 4px;
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  color: #787c7f;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.control-btn:hover {
+  border-color: #787c7f;
+  color: #585d60;
+}
+
+.control-btn.active {
+  background: #ffffff;
+  color: #2e3438;
+  border-color: #787c7f;
+}
+
+/* Toggle Control Group */
+.toggle-control {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid #e2e5e9;
+  border-radius: 4px;
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  color: #787c7f;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.toggle-btn:hover {
+  border-color: #787c7f;
+  color: #585d60;
+}
+
+.toggle-btn.active {
+  background: #ffffff;
+  color: #2e3438;
+  border-color: #787c7f;
+}
+
+.toggle-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e2e5e9;
+  transition: background 0.15s ease;
+}
+
+.toggle-btn.active .toggle-indicator {
+  background: #2e3438;
+}
+
+/* Prototype Frame */
+.prototype-frame {
+  background: transparent;
+  padding: 0;
+}
+
+/* Prototype Content Area (white inner box) */
+.prototype-content {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+/* Iteration Labels */
+.iteration-label {
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  color: #9fa3a8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .toggle-control {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .toggle-btn {
+    justify-content: center;
+  }
+  
+  .prototype-frame {
+    padding: 32px 20px;
+  }
+}
