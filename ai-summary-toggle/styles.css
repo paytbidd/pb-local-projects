@@ -118,8 +118,9 @@
   background: var(--background-app);
   border-radius: 8px;
   min-height: 36px;
-  padding: 0 0 4px 0;
+  padding: 0 0 8px 0;
   position: relative;
+  overflow: hidden;
 }
 
 .ai-chat-wrapper::before {
@@ -135,6 +136,7 @@
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+  z-index: 1;
 }
 
 /* Expanded Summary (Iteration 1) */
@@ -158,13 +160,15 @@
   text-overflow: ellipsis;
 }
 
-/* Collapsed Title (Iteration 2) */
+/* Title Row (Iteration 2 & 3) */
 .ai-title-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 4px;
   padding: 8px 8px 4px 12px;
+  position: relative;
+  z-index: 2;
 }
 
 .title-left {
@@ -187,29 +191,32 @@
   text-overflow: ellipsis;
 }
 
-/* Expandable Summary */
-.ai-summary-expandable {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  padding: 0 8px 0 12px;
+/* Summary Preview (always visible, iterations 2 & 3) */
+.ai-summary-preview {
+  padding: 0 12px 0 12px;
+  position: relative;
+  z-index: 2;
 }
 
-.ai-summary-expandable.expanded {
-  max-height: 200px;
-  padding: 4px 8px 4px 12px;
-}
-
-.ai-summary-expandable p {
-  font-size: var(--size-m);
-  font-weight: var(--weight-regular);
-  color: var(--text-secondary);
-  line-height: var(--line-height-m);
+.ai-summary-preview.two-lines p,
+.ai-summary-preview.one-line p {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #585d60;
+  line-height: 20px;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
+}
+
+.ai-summary-preview.two-lines p {
+  -webkit-line-clamp: 2;
+}
+
+.ai-summary-preview.one-line p {
+  -webkit-line-clamp: 1;
 }
 
 /* Chevron Button */
@@ -231,9 +238,6 @@
   stroke: var(--text-secondary);
 }
 
-.expand-btn.expanded {
-  transform: rotate(90deg);
-}
 
 /* App Link Preview - matches Figma: pt-8px */
 .app-link-preview {
@@ -306,28 +310,3 @@
   text-overflow: ellipsis;
 }
 
-/* Expand Control - hidden by default, shown for iteration 2 */
-.expand-control {
-  display: none;
-}
-
-.expand-control.visible {
-  display: block;
-}
-
-/* Expand Link - text with underline */
-.expand-link {
-  background: none;
-  border: none;
-  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
-  font-size: 11px;
-  color: var(--text-subtle);
-  text-decoration: underline;
-  cursor: pointer;
-  padding: 0;
-  transition: color 0.15s ease;
-}
-
-.expand-link:hover {
-  color: var(--text-secondary);
-}
