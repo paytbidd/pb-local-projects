@@ -123,6 +123,11 @@
   overflow: hidden;
 }
 
+/* No summary variant - less padding */
+.ai-chat-attachment.no-summary .ai-chat-wrapper {
+  padding-bottom: 4px;
+}
+
 .ai-chat-wrapper::before {
   content: '';
   position: absolute;

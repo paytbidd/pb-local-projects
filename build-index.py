@@ -1,11 +1,73 @@
-<!DOCTYPE html>
+#!/usr/bin/env python3
+"""
+Auto-generates index.html from project folders.
+Each project folder should have a metadata.json with name and description.
+Run: python3 build-index.py
+"""
+
+import os
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).parent
+IGNORE_DIRS = {'.git', 'node_modules', '__pycache__', 'assets'}
+
+def get_projects():
+    """Find all project directories with an index.html"""
+    projects = []
+    
+    for item in ROOT.iterdir():
+        if item.is_dir() and item.name not in IGNORE_DIRS and not item.name.startswith('.'):
+            index_file = item / 'index.html'
+            if index_file.exists():
+                metadata_file = item / 'metadata.json'
+                
+                # Default metadata
+                metadata = {
+                    'name': item.name,
+                    'description': 'Prototype project'
+                }
+                
+                # Load metadata if exists
+                if metadata_file.exists():
+                    try:
+                        with open(metadata_file, 'r') as f:
+                            metadata.update(json.load(f))
+                    except json.JSONDecodeError:
+                        pass
+                
+                metadata['folder'] = item.name
+                projects.append(metadata)
+    
+    # Sort by name (newest first if using date prefixes, otherwise alphabetical)
+    projects.sort(key=lambda p: p['name'], reverse=True)
+    return projects
+
+def generate_index(projects):
+    """Generate the index.html content"""
+    
+    if projects:
+        projects_html = '\n'.join([
+            f'''      <a href="{p['folder']}/" class="project">
+        <div class="project-info">
+          <span class="project-name">{p['name']}</span>
+          <span class="project-desc">{p['description']}</span>
+        </div>
+        <span class="project-arrow"><svg viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>'''
+            for p in projects
+        ])
+    else:
+        projects_html = '      <div class="empty">No projects yet</div>'
+    
+    return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prototypes</title>
   <style>
-    :root {
+    :root {{
       --text-primary: #2e3438;
       --text-secondary: #585d60;
       --text-subtle: #787c7f;
@@ -13,48 +75,48 @@
       --background: #f8fafb;
       --background-card: #ffffff;
       --border: #e2e5e9;
-    }
+    }}
 
-    *, *::before, *::after {
+    *, *::before, *::after {{
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
+    }}
 
-    body {
+    body {{
       font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
       background: var(--background);
       color: var(--text-primary);
       min-height: 100vh;
       padding: 48px 24px;
       line-height: 1.5;
-    }
+    }}
 
-    .container {
+    .container {{
       max-width: 560px;
       margin: 0 auto;
-    }
+    }}
 
-    header {
+    header {{
       margin-bottom: 48px;
-    }
+    }}
 
-    h1 {
+    h1 {{
       font-size: 14px;
       font-weight: 500;
       color: var(--text-primary);
       margin-bottom: 8px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-    }
+    }}
 
-    .description {
+    .description {{
       font-size: 12px;
       color: var(--text-subtle);
       line-height: 1.6;
-    }
+    }}
 
-    .projects {
+    .projects {{
       display: flex;
       flex-direction: column;
       gap: 1px;
@@ -62,9 +124,9 @@
       border: 1px solid var(--border);
       border-radius: 6px;
       overflow: hidden;
-    }
+    }}
 
-    .project {
+    .project {{
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -73,81 +135,81 @@
       background: var(--background-card);
       text-decoration: none;
       transition: background 0.15s ease;
-    }
+    }}
 
-    .project:hover {
+    .project:hover {{
       background: var(--background);
-    }
+    }}
 
-    .project-info {
+    .project-info {{
       display: flex;
       flex-direction: column;
       gap: 4px;
       min-width: 0;
-    }
+    }}
 
-    .project-name {
+    .project-name {{
       font-size: 13px;
       font-weight: 500;
       color: var(--text-primary);
-    }
+    }}
 
-    .project-desc {
+    .project-desc {{
       font-size: 11px;
       color: var(--text-subtle);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
+    }}
 
-    .project-arrow {
+    .project-arrow {{
       flex-shrink: 0;
       width: 16px;
       height: 16px;
       color: var(--text-muted);
       transition: transform 0.15s ease, color 0.15s ease;
-    }
+    }}
 
-    .project-arrow svg {
+    .project-arrow svg {{
       width: 16px;
       height: 16px;
-    }
+    }}
 
-    .project:hover .project-arrow {
+    .project:hover .project-arrow {{
       transform: translateX(2px);
       color: var(--text-secondary);
-    }
+    }}
 
-    .empty {
+    .empty {{
       padding: 32px 20px;
       background: var(--background-card);
       text-align: center;
       font-size: 12px;
       color: var(--text-subtle);
-    }
+    }}
 
-    footer {
+    footer {{
       margin-top: 48px;
       text-align: center;
       font-size: 10px;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.5px;
-    }
+    }}
 
-    .logo {
+    .logo {{
       display: block;
       margin: 0 auto 12px;
-    }
+    }}
 
-    .logo svg {
+    .logo svg {{
       height: 40px;
       width: auto;
-    }
+    }}
 
-    .footer-text {
+    .footer-text {{
       display: block;
-    }
+    }}
   </style>
 </head>
 <body>
@@ -158,20 +220,7 @@
     </header>
 
     <div class="projects" id="projects">
-      <a href="ai-summary-toggle/" class="project">
-        <div class="project-info">
-          <span class="project-name">ai-summary-toggle</span>
-          <span class="project-desc">Compare AI thread component iterations</span>
-        </div>
-        <span class="project-arrow"><svg viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
-      <a href="ai-link-marriage/" class="project">
-        <div class="project-info">
-          <span class="project-name">ai-link-marriage</span>
-          <span class="project-desc">5 ways to show the Notion link came from the AI chat</span>
-        </div>
-        <span class="project-arrow"><svg viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
+{projects_html}
     </div>
 
     <footer>
@@ -189,3 +238,21 @@
   </div>
 </body>
 </html>
+'''
+
+def main():
+    projects = get_projects()
+    print(f"Found {len(projects)} project(s):")
+    for p in projects:
+        print(f"  - {p['name']}: {p['description']}")
+    
+    index_content = generate_index(projects)
+    
+    index_path = ROOT / 'index.html'
+    with open(index_path, 'w') as f:
+        f.write(index_content)
+    
+    print(f"\n✓ Generated index.html with {len(projects)} project(s)")
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI + Link Marriage - Design Exploration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../template.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-title">
+        <a href="../" class="back-link" aria-label="Back to index">
+          <svg viewBox="0 0 16 16" fill="none">
+            <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <h1>AI + Link Marriage Exploration</h1>
+      </div>
+      <p class="subtitle">5 ways to show the Notion link came from the AI chat</p>
+    </header>
+
+    <!-- Controls -->
+    <div class="controls">
+      <div class="toggle-control">
+        <button class="toggle-btn active" data-iteration="1">Connector</button>
+        <button class="toggle-btn" data-iteration="2">Nested</button>
+        <button class="toggle-btn" data-iteration="3">Unified</button>
+        <button class="toggle-btn" data-iteration="4">Tinted</button>
+        <button class="toggle-btn" data-iteration="5">Seamless</button>
+      </div>
+    </div>
+
+    <!-- Prototype Frame -->
+    <div class="prototype-frame">
+      <div class="iteration-container">
+        
+        <!-- Variation 1: Connector Line -->
+        <div class="iteration iteration-1 active" data-iteration="1">
+          <p class="variation-desc">Vertical connector line shows relationship</p>
+          <div class="message-card">
+            <div class="message-wrapper">
+              <div class="avatar-wrapper">
+                <img src="assets/avatar.png" alt="Karen Wilkens" class="avatar">
+              </div>
+              <div class="content">
+                <div class="name-time">
+                  <span class="name">Karen Wilkens</span>
+                  <span class="time">3:34 PM</span>
+                </div>
+                <div class="attachments">
+                  <div class="connected-group">
+                    <div class="connector-line"></div>
+                    <div class="connected-items">
+                      <div class="ai-chat-attachment">
+                        <div class="ai-chat-wrapper">
+                          <div class="ai-title-row">
+                            <div class="title-left">
+                              <img class="sparkle-icon" src="assets/icon-sparkle-filled.png" alt="" width="20" height="20">
+                              <span class="thread-title">CI/CD pipeline and deployment process</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="app-link-preview">
+                        <div class="link-preview-container">
+                          <div class="link-content">
+                            <div class="link-title-row">
+                              <span class="link-title">Deployment Process</span>
+                              <button class="chevron-btn" aria-label="Open link">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                  <path d="M6 4L10 8L6 12" stroke="#9fa3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                              </button>
+                            </div>
+                            <div class="link-meta">
+                              <div class="favicon">
+                                <img src="assets/notion-icon.png" alt="Notion" width="16" height="16">
+                              </div>
+                              <span class="link-subtitle">Engineering · Mitra Global</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Variation 2: Nested -->
+        <div class="iteration iteration-2" data-iteration="2">
+          <p class="variation-desc">Link nested inside AI attachment container</p>
+          <div class="message-card">
+            <div class="message-wrapper">
+              <div class="avatar-wrapper">
+                <img src="assets/avatar.png" alt="Karen Wilkens" class="avatar">
+              </div>
+              <div class="content">
+                <div class="name-time">
+                  <span class="name">Karen Wilkens</span>
+                  <span class="time">3:34 PM</span>
+                </div>
+                <div class="attachments">
+                  <div class="ai-chat-attachment nested-variant">
+                    <div class="ai-chat-wrapper-nested">
+                      <div class="ai-title-row">
+                        <div class="title-left">
+                          <img class="sparkle-icon" src="assets/icon-sparkle-filled.png" alt="" width="20" height="20">
+                          <span class="thread-title">CI/CD pipeline and deployment process</span>
+                        </div>
+                      </div>
+                      <div class="nested-link">
+                        <div class="link-preview-container nested">
+                          <div class="link-content">
+                            <div class="link-title-row">
+                              <span class="link-title">Deployment Process</span>
+                              <button class="chevron-btn" aria-label="Open link">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                  <path d="M6 4L10 8L6 12" stroke="#9fa3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                              </button>
+                            </div>
+                            <div class="link-meta">
+                              <div class="favicon">
+                                <img src="assets/notion-icon.png" alt="Notion" width="16" height="16">
+                              </div>
+                              <span class="link-subtitle">Engineering · Mitra Global</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Variation 3: Unified Container -->
+        <div class="iteration iteration-3" data-iteration="3">
+          <p class="variation-desc">Single gradient container wraps both elements</p>
+          <div class="message-card">
+            <div class="message-wrapper">
+              <div class="avatar-wrapper">
+                <img src="assets/avatar.png" alt="Karen Wilkens" class="avatar">
+              </div>
+              <div class="content">
+                <div class="name-time">
+                  <span class="name">Karen Wilkens</span>
+                  <span class="time">3:34 PM</span>
+                </div>
+                <div class="attachments">
+                  <div class="unified-container">
+                    <div class="unified-wrapper">
+                      <div class="unified-ai-section">
+                        <div class="ai-title-row">
+                          <div class="title-left">
+                            <img class="sparkle-icon" src="assets/icon-sparkle-filled.png" alt="" width="20" height="20">
+                            <span class="thread-title">CI/CD pipeline and deployment process</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="unified-divider"></div>
+                      <div class="unified-link-section">
+                        <div class="link-title-row">
+                          <span class="link-title">Deployment Process</span>
+                          <button class="chevron-btn" aria-label="Open link">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                              <path d="M6 4L10 8L6 12" stroke="#9fa3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                          </button>
+                        </div>
+                        <div class="link-meta">
+                          <div class="favicon">
+                            <img src="assets/notion-icon.png" alt="Notion" width="16" height="16">
+                          </div>
+                          <span class="link-subtitle">Engineering · Mitra Global</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Variation 4: Tinted Edge -->
+        <div class="iteration iteration-4" data-iteration="4">
+          <p class="variation-desc">Gradient left edge on link echoes AI attachment</p>
+          <div class="message-card">
+            <div class="message-wrapper">
+              <div class="avatar-wrapper">
+                <img src="assets/avatar.png" alt="Karen Wilkens" class="avatar">
+              </div>
+              <div class="content">
+                <div class="name-time">
+                  <span class="name">Karen Wilkens</span>
+                  <span class="time">3:34 PM</span>
+                </div>
+                <div class="attachments">
+                  <div class="ai-chat-attachment">
+                    <div class="ai-chat-wrapper compact">
+                      <div class="ai-title-row">
+                        <div class="title-left">
+                          <img class="sparkle-icon" src="assets/icon-sparkle-filled.png" alt="" width="20" height="20">
+                          <span class="thread-title">CI/CD pipeline and deployment process</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="app-link-preview tinted">
+                    <div class="link-preview-container tinted-link">
+                      <div class="link-content">
+                        <div class="link-title-row">
+                          <span class="link-title">Deployment Process</span>
+                          <button class="chevron-btn" aria-label="Open link">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                              <path d="M6 4L10 8L6 12" stroke="#9fa3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                          </button>
+                        </div>
+                        <div class="link-meta">
+                          <div class="favicon">
+                            <img src="assets/notion-icon.png" alt="Notion" width="16" height="16">
+                          </div>
+                          <span class="link-subtitle">Engineering · Mitra Global</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Variation 5: Seamless/Merged -->
+        <div class="iteration iteration-5" data-iteration="5">
+          <p class="variation-desc">Link flows seamlessly from AI attachment</p>
+          <div class="message-card">
+            <div class="message-wrapper">
+              <div class="avatar-wrapper">
+                <img src="assets/avatar.png" alt="Karen Wilkens" class="avatar">
+              </div>
+              <div class="content">
+                <div class="name-time">
+                  <span class="name">Karen Wilkens</span>
+                  <span class="time">3:34 PM</span>
+                </div>
+                <div class="attachments">
+                  <div class="seamless-group">
+                    <div class="ai-chat-attachment seamless-ai">
+                      <div class="ai-chat-wrapper-seamless">
+                        <div class="ai-title-row">
+                          <div class="title-left">
+                            <img class="sparkle-icon" src="assets/icon-sparkle-filled.png" alt="" width="20" height="20">
+                            <span class="thread-title">CI/CD pipeline and deployment process</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="seamless-link">
+                      <div class="link-content">
+                        <div class="link-title-row">
+                          <div class="favicon">
+                            <img src="assets/notion-icon.png" alt="Notion" width="16" height="16">
+                          </div>
+                          <span class="link-title">Deployment Process</span>
+                          <button class="chevron-btn" aria-label="Open link">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                              <path d="M6 4L10 8L6 12" stroke="#9fa3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+# Prototype Playground Rules
+
+This is a prototype playground for design explorations and UI experiments. Each prototype lives in its own folder.
+
+## Project Structure
+
+```
+pb-local-projects/
+├── index.html          # Auto-generated project listing (DO NOT edit manually)
+├── template.css        # Shared styles for all prototypes
+├── build-index.py      # Script to regenerate index.html
+├── .cursorrules        # This file
+└── [project-name]/     # Individual prototype folders
+    ├── index.html      # Prototype entry point
+    ├── styles.css      # Project-specific styles
+    ├── script.js       # Project-specific JavaScript
+    ├── metadata.json   # Project name and description
+    └── assets/         # Images, icons, etc.
+```
+
+## Creating a New Prototype
+
+1. **Create project folder** with a kebab-case name (e.g., `my-new-prototype/`)
+
+2. **Required files:**
+   - `index.html` - Must link to `../template.css` for shared styles
+   - `styles.css` - Project-specific styles
+   - `metadata.json` - Contains `name` and `description` fields
+   - `script.js` - If interactive (toggle buttons, etc.)
+
+3. **metadata.json format:**
+   ```json
+   {
+     "name": "project-name",
+     "description": "Brief description for the index page"
+   }
+   ```
+
+4. **Update the index** by running:
+   ```bash
+   python3 build-index.py
+   ```
+
+## Template Conventions
+
+### HTML Structure
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Title</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../template.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-title">
+        <a href="../" class="back-link" aria-label="Back to index">
+          <svg viewBox="0 0 16 16" fill="none">
+            <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <h1>Project Title</h1>
+      </div>
+      <p class="subtitle">Description</p>
+    </header>
+    
+    <div class="controls">
+      <div class="toggle-control">
+        <button class="toggle-btn active" data-iteration="1">Option 1</button>
+        <button class="toggle-btn" data-iteration="2">Option 2</button>
+      </div>
+    </div>
+    
+    <div class="prototype-frame">
+      <div class="iteration-container">
+        <div class="iteration iteration-1 active" data-iteration="1">
+          <!-- Content -->
+        </div>
+        <div class="iteration iteration-2" data-iteration="2">
+          <!-- Content -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+### Standard Toggle Script (script.js)
+```javascript
+const toggleBtns = document.querySelectorAll('.toggle-btn');
+const iterations = document.querySelectorAll('.iteration');
+let currentIteration = 1;
+
+toggleBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const iteration = parseInt(btn.dataset.iteration);
+    if (iteration === currentIteration) return;
+    currentIteration = iteration;
+    toggleBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    iterations.forEach(iter => {
+      iter.classList.remove('active');
+      if (parseInt(iter.dataset.iteration) === iteration) {
+        iter.classList.add('active');
+      }
+    });
+  });
+});
+```
+
+### CSS Conventions
+- Override `.container` max-width if needed
+- Use CSS custom properties from template.css
+- Define `.iteration` display states:
+  ```css
+  .iteration { display: none; }
+  .iteration.active { display: block; }
+  ```
+
+## Design Tokens (from Figma)
+
+```css
+:root {
+  --text-primary: #2e3438;
+  --text-secondary: #585d60;
+  --text-subtle: #787c7f;
+  --icon-secondary: #9fa3a8;
+  --background-app: #f8fafb;
+  --background-body: #ffffff;
+  --border-container: #e2e5e9;
+}
+```
+
+## Running Locally
+
+Start the server from the project root:
+```bash
+cd /Users/payton/git/pb-local-projects
+python3 -m http.server 8080
+```
+
+View at: http://localhost:8080/
+
+## Figma Integration
+
+When building from Figma designs:
+1. Use `mcp_Figma_Desktop_get_design_context` to extract styles
+2. Use `mcp_Figma_Desktop_get_screenshot` for visual reference
+3. Download assets to `assets/` folder
+4. Match exact colors, fonts, spacing from Figma
+
+## Checklist for New Projects
+
+- [ ] Created project folder with kebab-case name
+- [ ] Added index.html with template.css link
+- [ ] Added styles.css with project-specific styles
+- [ ] Added metadata.json with name and description
+- [ ] Added script.js if interactive
+- [ ] Copied any needed assets to assets/ folder
+- [ ] Ran `python3 build-index.py` to update index
+- [ ] Tested at http://localhost:8080/[project-name]/

@@ -13,25 +13,22 @@
 <body>
   <div class="container">
     <header class="header">
-      <h1>AI Thread Component Comparison</h1>
-      <p class="subtitle">Toggle between iterations to compare designs</p>
+      <div class="header-title">
+        <a href="../" class="back-link" aria-label="Back to index">
+          <svg viewBox="0 0 16 16" fill="none">
+            <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <h1>AI Thread Component Comparison</h1>
+      </div>
+      <p class="subtitle">Toggle between scenarios to compare designs</p>
     </header>
 
     <!-- Controls -->
     <div class="controls">
       <div class="toggle-control">
-        <button class="toggle-btn active" data-iteration="1">
-          <span class="toggle-indicator"></span>
-          1. Summary Only
-        </button>
-        <button class="toggle-btn" data-iteration="2">
-          <span class="toggle-indicator"></span>
-          2. Title + 2-line
-        </button>
-        <button class="toggle-btn" data-iteration="3">
-          <span class="toggle-indicator"></span>
-          3. Title + 1-line
-        </button>
+        <button class="toggle-btn active" data-iteration="1">Without Attachment</button>
+        <button class="toggle-btn" data-iteration="2">With Attachment</button>
       </div>
     </div>
 
@@ -39,7 +36,7 @@
     <div class="prototype-frame">
       <!-- Iteration Display Area -->
       <div class="iteration-container">
-        <!-- Iteration 1: Summary Only -->
+        <!-- Iteration 1: Without Additional Attachment (shows summary preview) -->
         <div class="iteration iteration-1 active" data-iteration="1">
           <div class="message-card">
             <div class="message-wrapper">
@@ -52,37 +49,17 @@
                   <span class="time">3:34 PM</span>
                 </div>
                 <div class="attachments">
-                  <!-- AI Chat Attachment - Summary Only -->
+                  <!-- AI Chat Attachment - With Summary Preview (no additional attachment) -->
                   <div class="ai-chat-attachment">
                     <div class="ai-chat-wrapper">
-                      <div class="ai-summary-text">
-                        <p>We discussed the CI/CD pipeline and successfully created a comprehensive Notion page detailing the entire deployment process, including step-by-step instructions and best practices.</p>
-                        <button class="chevron-btn" aria-label="View details">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M6 4L10 8L6 12" stroke="#9fa3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                          </svg>
-                        </button>
+                      <div class="ai-title-row">
+                        <div class="title-left">
+                          <img class="sparkle-icon" src="assets/icon-sparkle-filled.png" alt="" width="20" height="20">
+                          <span class="thread-title">CI/CD pipeline and deployment process</span>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <!-- App Link Preview -->
-                  <div class="app-link-preview">
-                    <div class="link-preview-container">
-                      <div class="link-content">
-                        <div class="link-title-row">
-                          <span class="link-title">Deployment Process</span>
-                          <button class="chevron-btn" aria-label="Open link">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                              <path d="M6 4L10 8L6 12" stroke="#9fa3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                          </button>
-                        </div>
-                        <div class="link-meta">
-                          <div class="favicon">
-                            <img src="assets/notion-icon.png" alt="Notion" width="16" height="16">
-                          </div>
-                          <span class="link-subtitle">Engineering · Mitra Global</span>
-                        </div>
+                      <div class="ai-summary-preview two-lines">
+                        <p>We discussed the CI/CD pipeline and created a comprehensive Notion page detailing the entire deployment process, including step-by-step instructions, environment configurations, rollback procedures, and best practices for continuous integration.</p>
                       </div>
                     </div>
                   </div>
@@ -92,7 +69,7 @@
           </div>
         </div>
 
-        <!-- Iteration 2: Title + 2-line Summary -->
+        <!-- Iteration 2: With Additional Attachment (no summary preview) -->
         <div class="iteration iteration-2" data-iteration="2">
           <div class="message-card">
             <div class="message-wrapper">
@@ -105,81 +82,14 @@
                   <span class="time">3:34 PM</span>
                 </div>
                 <div class="attachments">
-                  <!-- AI Chat Attachment - Title + 2-line Summary -->
-                  <div class="ai-chat-attachment">
+                  <!-- AI Chat Attachment - Title Only (has additional attachment) -->
+                  <div class="ai-chat-attachment no-summary">
                     <div class="ai-chat-wrapper">
                       <div class="ai-title-row">
                         <div class="title-left">
                           <img class="sparkle-icon" src="assets/icon-sparkle-filled.png" alt="" width="20" height="20">
                           <span class="thread-title">CI/CD pipeline and deployment process</span>
                         </div>
-                        <button class="chevron-btn" aria-label="View details">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M6 4L10 8L6 12" stroke="#9fa3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                          </svg>
-                        </button>
-                      </div>
-                      <div class="ai-summary-preview two-lines">
-                        <p>We discussed the CI/CD pipeline and successfully created a comprehensive Notion page detailing the entire deployment process, including step-by-step instructions and best practices.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- App Link Preview -->
-                  <div class="app-link-preview">
-                    <div class="link-preview-container">
-                      <div class="link-content">
-                        <div class="link-title-row">
-                          <span class="link-title">Deployment Process</span>
-                          <button class="chevron-btn" aria-label="Open link">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                              <path d="M6 4L10 8L6 12" stroke="#9fa3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                          </button>
-                        </div>
-                        <div class="link-meta">
-                          <div class="favicon">
-                            <img src="assets/notion-icon.png" alt="Notion" width="16" height="16">
-                          </div>
-                          <span class="link-subtitle">Engineering · Mitra Global</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Iteration 3: Title + 1-line Summary -->
-        <div class="iteration iteration-3" data-iteration="3">
-          <div class="message-card">
-            <div class="message-wrapper">
-              <div class="avatar-wrapper">
-                <img src="assets/avatar.png" alt="Karen Wilkens" class="avatar">
-              </div>
-              <div class="content">
-                <div class="name-time">
-                  <span class="name">Karen Wilkens</span>
-                  <span class="time">3:34 PM</span>
-                </div>
-                <div class="attachments">
-                  <!-- AI Chat Attachment - Title + 1-line Summary -->
-                  <div class="ai-chat-attachment">
-                    <div class="ai-chat-wrapper">
-                      <div class="ai-title-row">
-                        <div class="title-left">
-                          <img class="sparkle-icon" src="assets/icon-sparkle-filled.png" alt="" width="20" height="20">
-                          <span class="thread-title">CI/CD pipeline and deployment process</span>
-                        </div>
-                        <button class="chevron-btn" aria-label="View details">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M6 4L10 8L6 12" stroke="#9fa3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                          </svg>
-                        </button>
-                      </div>
-                      <div class="ai-summary-preview one-line">
-                        <p>We discussed the CI/CD pipeline and successfully created a comprehensive Notion page detailing the entire deployment process, including step-by-step instructions and best practices.</p>
                       </div>
                     </div>
                   </div>

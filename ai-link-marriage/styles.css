@@ -1,0 +1,477 @@
+/* Project-specific Design Tokens from Figma */
+:root {
+  /* Colors */
+  --text-primary: #2e3438;
+  --text-secondary: #585d60;
+  --text-subtle: #787c7f;
+  --icon-secondary: #9fa3a8;
+  --background-app: #f8fafb;
+  --background-body: #ffffff;
+  --border-container: #e2e5e9;
+  --lemon-400: #fce153;
+  --grape-500: #b32df6;
+  
+  /* Typography */
+  --font-family: 'Lato', sans-serif;
+  --size-xs: 11px;
+  --size-m: 14px;
+  --size-l: 15px;
+  --line-height-xs: 12px;
+  --line-height-m: 20px;
+  --line-height-l: 22px;
+  --weight-regular: 400;
+  --weight-bold: 700;
+  --weight-black: 900;
+}
+
+/* Override container width for this project */
+.container {
+  max-width: 680px;
+}
+
+/* Variation description */
+.variation-desc {
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+  font-size: 11px;
+  color: var(--text-subtle);
+  text-align: center;
+  margin-bottom: 16px;
+  padding: 8px 12px;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+/* Prototype frame */
+.prototype-frame {
+  background: transparent;
+  padding: 0;
+}
+
+.iteration-container {
+  background: var(--background-body);
+}
+
+.iteration {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.iteration.active {
+  display: block;
+}
+
+/* Message Card */
+.message-card {
+  background: var(--background-body);
+  padding: 8px 16px 16px 16px;
+  font-family: var(--font-family);
+}
+
+.message-wrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.avatar-wrapper {
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.name-time {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  height: 20px;
+}
+
+.name {
+  font-size: var(--size-m);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  line-height: var(--line-height-m);
+}
+
+.time {
+  font-size: var(--size-xs);
+  font-weight: var(--weight-regular);
+  color: var(--text-subtle);
+  line-height: var(--line-height-xs);
+}
+
+.attachments {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4px;
+}
+
+/* Base AI Chat Attachment */
+.ai-chat-attachment {
+  padding-top: 4px;
+}
+
+.ai-chat-wrapper {
+  background: var(--background-app);
+  border-radius: 8px;
+  min-height: 36px;
+  padding: 0 0 4px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-chat-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 1px;
+  background: linear-gradient(90deg, #FCE153 0%, #FE9446 40%, #B32DF6 100%);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ai-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 8px 8px 4px 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.title-left {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sparkle-icon {
+  flex-shrink: 0;
+}
+
+.thread-title {
+  font-size: var(--size-m);
+  font-weight: var(--weight-bold);
+  color: var(--text-secondary);
+  line-height: var(--line-height-m);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Base App Link Preview */
+.app-link-preview {
+  padding-top: 8px;
+}
+
+.link-preview-container {
+  background: var(--background-body);
+  border: 1px solid var(--border-container);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.link-content {
+  padding: 8px 8px 8px 12px;
+}
+
+.link-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 22px;
+}
+
+.link-title {
+  flex: 1;
+  font-size: var(--size-l);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  line-height: var(--line-height-l);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 20px;
+}
+
+.favicon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favicon img {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.link-subtitle {
+  font-size: var(--size-m);
+  font-weight: var(--weight-regular);
+  color: var(--text-subtle);
+  line-height: var(--line-height-m);
+}
+
+.chevron-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.chevron-btn:hover svg path {
+  stroke: var(--text-secondary);
+}
+
+
+/* ========================================
+   VARIATION 1: Connector Line
+   ======================================== */
+.connected-group {
+  display: flex;
+  gap: 0;
+  padding-top: 4px;
+}
+
+.connector-line {
+  width: 2px;
+  background: linear-gradient(180deg, #FCE153 0%, #FE9446 50%, #B32DF6 100%);
+  border-radius: 1px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.connected-items {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.connected-items .ai-chat-attachment {
+  padding-top: 0;
+}
+
+.connected-items .app-link-preview {
+  padding-top: 4px;
+}
+
+
+/* ========================================
+   VARIATION 2: Nested
+   ======================================== */
+.nested-variant {
+  padding-top: 4px;
+}
+
+.ai-chat-wrapper-nested {
+  background: var(--background-app);
+  border-radius: 8px;
+  padding: 0 0 8px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-chat-wrapper-nested::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 1px;
+  background: linear-gradient(90deg, #FCE153 0%, #FE9446 40%, #B32DF6 100%);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nested-link {
+  padding: 2px 8px 0 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.link-preview-container.nested {
+  background: var(--background-body);
+  border: 1px solid var(--border-container);
+  border-radius: 6px;
+}
+
+
+/* ========================================
+   VARIATION 3: Unified Container
+   ======================================== */
+.unified-container {
+  padding-top: 4px;
+}
+
+.unified-wrapper {
+  background: var(--background-app);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.unified-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 1px;
+  background: linear-gradient(90deg, #FCE153 0%, #FE9446 40%, #B32DF6 100%);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.unified-ai-section {
+  position: relative;
+  z-index: 2;
+}
+
+.unified-ai-section .ai-title-row {
+  padding-bottom: 8px;
+}
+
+.unified-divider {
+  height: 1px;
+  background: var(--border-container);
+  margin: 0 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.unified-link-section {
+  padding: 8px 8px 8px 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.unified-link-section .link-title {
+  font-size: var(--size-m);
+}
+
+
+/* ========================================
+   VARIATION 4: Tinted Edge
+   ======================================== */
+.ai-chat-wrapper.compact {
+  padding-bottom: 4px;
+}
+
+.app-link-preview.tinted {
+  padding-top: 8px;
+}
+
+.link-preview-container.tinted-link {
+  position: relative;
+  border-left: 2px solid transparent;
+  border-radius: 8px;
+  background: 
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(180deg, #FCE153 0%, #FE9446 50%, #B32DF6 100%) border-box;
+  border-top: 1px solid var(--border-container);
+  border-right: 1px solid var(--border-container);
+  border-bottom: 1px solid var(--border-container);
+}
+
+
+/* ========================================
+   VARIATION 5: Seamless/Merged
+   ======================================== */
+.seamless-group {
+  margin-top: 4px;
+  position: relative;
+  background: var(--background-app);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background-image: linear-gradient(var(--background-app), var(--background-app)), 
+                    linear-gradient(90deg, #FCE153 0%, #FE9446 40%, #B32DF6 100%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.seamless-ai {
+  padding-top: 0;
+}
+
+.ai-chat-wrapper-seamless {
+  padding: 0 0 4px 0;
+  position: relative;
+}
+
+.seamless-link {
+  background: var(--background-app);
+  border-radius: 0 0 7px 7px;
+  position: relative;
+}
+
+.seamless-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12px;
+  right: 12px;
+  height: 1px;
+  background: var(--border-container);
+}
+
+.seamless-link .link-content {
+  padding: 8px 8px 10px 12px;
+}
+
+.seamless-link .link-title-row {
+  gap: 6px;
+}
+
+.seamless-link .link-title {
+  font-size: var(--size-m);
+}
+
+.seamless-link .favicon {
+  flex-shrink: 0;
+}
