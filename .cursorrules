@@ -60,8 +60,8 @@ pb-local-projects/
 <body>
   <div class="container">
     <header class="header">
-      <div class="header-title">
-        <a href="../" class="back-link" aria-label="Back to index">
+      <div class="header-title" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+        <a href="../" class="back-link" aria-label="Back to index" style="display: flex; align-items: center; color: #9fa3a8; text-decoration: none;">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
