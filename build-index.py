@@ -49,13 +49,14 @@ def generate_index(projects):
     if projects:
         projects_html = '\n'.join([
             f'''      <a href="{p['folder']}/" class="project">
+        <span class="project-number">{str(i+1).zfill(2)}</span>
         <div class="project-info">
           <span class="project-name">{p['name']}</span>
           <span class="project-desc">{p['description']}</span>
         </div>
         <span class="project-arrow"><svg viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>'''
-            for p in projects
+            for i, p in enumerate(projects)
         ])
     else:
         projects_html = '      <div class="empty">No projects yet</div>'
@@ -129,7 +130,6 @@ def generate_index(projects):
     .project {{
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 16px;
       padding: 16px 20px;
       background: var(--background-card);
@@ -141,11 +141,20 @@ def generate_index(projects):
       background: var(--background);
     }}
 
+    .project-number {{
+      flex-shrink: 0;
+      width: 24px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }}
+
     .project-info {{
       display: flex;
       flex-direction: column;
       gap: 4px;
       min-width: 0;
+      flex: 1;
     }}
 
     .project-name {{
@@ -213,6 +222,10 @@ def generate_index(projects):
   </style>
 </head>
 <body>
+  <!-- Local environment indicator -->
+  <div id="local-indicator" style="display: none; position: fixed; top: 10px; left: 10px; width: 8px; height: 8px; background: #fe9446; border-radius: 50%; z-index: 9999;"></div>
+  <script>if(location.hostname==='localhost'||location.hostname==='127.0.0.1')document.getElementById('local-indicator').style.display='block';</script>
+  
   <div class="container">
     <header>
       <h1>Prototypes</h1>

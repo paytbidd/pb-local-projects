@@ -67,7 +67,6 @@
     .project {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 16px;
       padding: 16px 20px;
       background: var(--background-card);
@@ -79,11 +78,20 @@
       background: var(--background);
     }
 
+    .project-number {
+      flex-shrink: 0;
+      width: 24px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
     .project-info {
       display: flex;
       flex-direction: column;
       gap: 4px;
       min-width: 0;
+      flex: 1;
     }
 
     .project-name {
@@ -151,6 +159,10 @@
   </style>
 </head>
 <body>
+  <!-- Local environment indicator -->
+  <div id="local-indicator" style="display: none; position: fixed; top: 10px; left: 10px; width: 8px; height: 8px; background: #fe9446; border-radius: 50%; z-index: 9999;"></div>
+  <script>if(location.hostname==='localhost'||location.hostname==='127.0.0.1')document.getElementById('local-indicator').style.display='block';</script>
+  
   <div class="container">
     <header>
       <h1>Prototypes</h1>
@@ -159,6 +171,7 @@
 
     <div class="projects" id="projects">
       <a href="ai-summary-toggle/" class="project">
+        <span class="project-number">01</span>
         <div class="project-info">
           <span class="project-name">ai-summary-toggle</span>
           <span class="project-desc">Compare AI thread component iterations</span>
@@ -166,6 +179,7 @@
         <span class="project-arrow"><svg viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
       <a href="ai-link-marriage/" class="project">
+        <span class="project-number">02</span>
         <div class="project-info">
           <span class="project-name">ai-link-marriage</span>
           <span class="project-desc">5 ways to show the Notion link came from the AI chat</span>
