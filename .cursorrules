@@ -9,13 +9,14 @@ pb-local-projects/
 ├── index.html          # Auto-generated project listing (DO NOT edit manually)
 ├── template.css        # Shared styles for all prototypes
 ├── build-index.py      # Script to regenerate index.html
+├── shared-assets/      # Reusable assets across projects
 ├── .cursorrules        # This file
 └── [project-name]/     # Individual prototype folders
     ├── index.html      # Prototype entry point
     ├── styles.css      # Project-specific styles
     ├── script.js       # Project-specific JavaScript
-    ├── metadata.json   # Project name and description
-    └── assets/         # Images, icons, etc.
+    ├── metadata.json   # Project name, shortName, and description
+    └── assets/         # Project-specific images, icons, etc.
 ```
 
 ## Creating a New Prototype
@@ -31,10 +32,14 @@ pb-local-projects/
 3. **metadata.json format:**
    ```json
    {
-     "name": "project-name",
+     "name": "Project Name",
+     "shortName": "PROJECT NAME",
      "description": "Brief description for the index page"
    }
    ```
+   - `name`: Full project name (used for sorting)
+   - `shortName`: ALL CAPS name displayed in the index listing
+   - `description`: Brief description shown below the name
 
 4. **Update the index** by running:
    ```bash
@@ -64,13 +69,15 @@ pb-local-projects/
   
   <div class="container">
     <header class="header">
-      <div class="header-title" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
-        <a href="../" aria-label="Back to index" style="display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; color: #9fa3a8; text-decoration: none;">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 12L6 8L10 4" stroke="#9fa3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+      <div class="header-title">
+        <a href="../" class="header-title-link" aria-label="Back to index">
+          <span class="back-chevron">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <h1>PROJECT TITLE</h1>
         </a>
-        <h1>Project Title</h1>
       </div>
       <p class="subtitle">Description</p>
     </header>
@@ -154,12 +161,29 @@ python3 -m http.server 8080
 
 View at: http://localhost:8080/
 
+## Shared Assets
+
+The `shared-assets/` folder contains reusable assets across projects. Reference them via `../shared-assets/filename.png`.
+
+**Current shared assets:**
+- `icon-sparkle-filled.png` - AI sparkle icon
+- `workspace.png` - Mitra Global workspace icon
+- `emoji-rocket.png` - Rocket emoji
+- `emoji-construction.png` - Construction worker emoji
+- `app-gdrive.png`, `app-github.png`, `app-figma.png` - App icons
+- `avatar-ai.png` - AI avatar
+- `notion-icon.png` - Notion icon
+
+**When to use shared vs project assets:**
+- Use `shared-assets/` for common icons, emojis, app logos
+- Use project `assets/` for prototype-specific images (unique avatars, screenshots, etc.)
+
 ## Figma Integration
 
 When building from Figma designs:
 1. Use `mcp_Figma_Desktop_get_design_context` to extract styles
 2. Use `mcp_Figma_Desktop_get_screenshot` for visual reference
-3. Download assets to `assets/` folder
+3. Download assets - add to `shared-assets/` if reusable, or project `assets/` if specific
 4. Match exact colors, fonts, spacing from Figma
 
 ## Checklist for New Projects

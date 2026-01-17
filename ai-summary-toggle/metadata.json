@@ -1,4 +1,5 @@
 {
-  "name": "ai-summary-toggle",
+  "name": "AI Summary Toggle",
+  "shortName": "AI SUMMARY TOGGLE",
   "description": "Compare AI thread component iterations"
 }

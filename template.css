@@ -33,6 +33,47 @@ body {
   margin-bottom: 4px;
 }
 
+/* Make the entire title area a clickable link */
+.header-title-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  padding: 4px 8px;
+  margin: -4px -8px;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+}
+
+.header-title-link:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.header-title-link:hover .back-chevron {
+  color: #585d60;
+}
+
+.header-title-link:hover h1 {
+  color: #585d60;
+}
+
+.back-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: #9fa3a8;
+  transition: color 0.15s ease;
+}
+
+.back-chevron svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Legacy back-link support */
 .back-link {
   display: flex;
   align-items: center;
@@ -61,6 +102,7 @@ body {
   margin-bottom: 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  transition: color 0.15s ease;
 }
 
 .header .subtitle {

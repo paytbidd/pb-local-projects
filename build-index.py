@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).parent
-IGNORE_DIRS = {'.git', 'node_modules', '__pycache__', 'assets'}
+IGNORE_DIRS = {'.git', 'node_modules', '__pycache__', 'assets', 'shared-assets'}
 
 def get_projects():
     """Find all project directories with an index.html"""
@@ -25,6 +25,7 @@ def get_projects():
                 # Default metadata
                 metadata = {
                     'name': item.name,
+                    'shortName': item.name.upper().replace('-', ' '),
                     'description': 'Prototype project'
                 }
                 
@@ -32,7 +33,11 @@ def get_projects():
                 if metadata_file.exists():
                     try:
                         with open(metadata_file, 'r') as f:
-                            metadata.update(json.load(f))
+                            loaded = json.load(f)
+                            metadata.update(loaded)
+                            # Generate shortName from name if not provided
+                            if 'shortName' not in loaded and 'name' in loaded:
+                                metadata['shortName'] = loaded['name'].upper()
                     except json.JSONDecodeError:
                         pass
                 
@@ -51,7 +56,7 @@ def generate_index(projects):
             f'''      <a href="{p['folder']}/" class="project">
         <span class="project-number">{str(i+1).zfill(2)}</span>
         <div class="project-info">
-          <span class="project-name">{p['name']}</span>
+          <span class="project-name">{p['shortName']}</span>
           <span class="project-desc">{p['description']}</span>
         </div>
         <span class="project-arrow"><svg viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
